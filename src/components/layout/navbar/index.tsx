@@ -9,7 +9,7 @@ export default async function Navbar() {
         </div> */}
         <div className="flex w-full items-center h-[4rem]">
           <div className="flex w-full justify-between sm:pr-11 items-center">
-            <span className='font-bold'>Clientes KYM</span>
+            <span className='font-bold text-xl'>KYM</span>
             <button
               className='bg-action p-2 rounded-lg text-white font-bold'
             >Consultar cuenta</button>
