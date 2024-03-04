@@ -85,16 +85,17 @@ const data: DataType[] = [
 ];
 
 interface TablePropTypes {
-    title: string
+    title: string,
+    data: any
 }
 
-const Table = ({title}: TablePropTypes) =>
+const Table = ({ title }: TablePropTypes) =>
     <div className='bg-white rounded-xl p-4'>
         <h1 className='font-semibold mb-2'>{title}</h1>
         <AntdTable
             columns={columns}
             dataSource={data}
-            scroll={{x: 800}}
+            scroll={{ x: 800 }}
             bordered={true}
             size='middle'
         />
