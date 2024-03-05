@@ -1,17 +1,3 @@
-/*
-    // selects initial information
-
-    SELECT gc_cuentas.TotPorCob, gc_cuentas.SalIni, gc_clientes.Nombre,
-        COALESCE(
-            (SELECT anticipo.Importe 
-                FROM gc_pags_cli AS anticipo 
-                WHERE anticipo.idCta = gc_cuentas.IdCta AND anticipo.TipPag = 'ANTICIPO'
-            ), 0
-        ) AS Anticipo
-    FROM gc_cuentas
-    INNER JOIN gc_clientes ON gc_clientes.IdCli = gc_cuentas.IdCli
-    WHERE gc_cuentas.NoCta = VAR_IDCTA;
-*/
 import mysql from 'mysql2/promise';
 
 function parser(obj: any){
@@ -30,10 +16,10 @@ export async function getCuenta(cuenta: string) {
     try {
         // create the connection to database
         const connection = await mysql.createConnection({
-            host: process.env.NEXT_PUBLIC_HOST,
-            user: process.env.NEXT_PUBLIC_USER,
-            database: process.env.NEXT_PUBLIC_DATABASE,
-            password: process.env.NEXT_PUBLIC_PASSWORD,
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            database: process.env.DB_DATABASE,
+            password: process.env.DB_PASSWORD,
         });
 
         // execute will internally call prepare and query
