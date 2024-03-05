@@ -29,7 +29,20 @@ export const tablaAmortColumns: TableProps<any>['columns'] = [
 
             if (text == '') return null
 
-            let color = text == 'EN COBRO' ? 'geekblue' : 'green';
+            let color = ''
+
+            if (text == 'CARGO') {
+                color = 'orange';
+            }
+            if (text == 'DESCUENTO') {
+                color = 'purple';
+            }
+            if (text == 'PAGADO') {
+                color = 'green';
+            }
+            if (text == 'POR COBRAR') {
+                color = 'geekblue';
+            }
             if (text == 'VENCIDO') {
                 color = 'red';
             }

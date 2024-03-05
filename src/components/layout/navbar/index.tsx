@@ -1,9 +1,17 @@
+'use client'
 import Link from 'next/link';
 import MobileMenu from './mobile-menu';
+import { usePathname } from 'next/navigation';
 
-export default async function Navbar() {
+export default function Navbar() {
+
+  const pathname = usePathname()
+  const link = pathname == '/' ? 
+    {path: '/cuenta', label: 'Consultar cuenta'} : 
+    {path: '/', label: 'Inicio'}
+
   return (
-    <nav className="sticky top-0 z-20 flex items-center justify-between  bg-white p-2 px-6 ">
+    <nav className="flex items-center justify-between  bg-white p-2 px-6 ">
       {/* <div className="block flex-none md:hidden">
           <MobileMenu />
         </div> */}
@@ -15,11 +23,11 @@ export default async function Navbar() {
             <img src="/logo.png" alt="logo" width={60} />
           </Link>
           <Link
-            href={'/cuenta'}
+            href={link.path}
           >
             <button
               className='bg-action p-2 rounded-lg text-white font-bold'
-            >Consultar cuenta</button>
+            >{link.label}</button>
           </Link>
         </div>
       </div>

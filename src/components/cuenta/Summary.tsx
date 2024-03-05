@@ -8,7 +8,7 @@ const Summary = (summaryObject: any) => {
     return (
 
         <div className='bg-white rounded-xl p-4' >
-            <h1 className='font-semibold mb-2'>Resumen</h1>
+            <h1 className='font-semibold mb-2'>Resumen de cuenta</h1>
             <Row>
                 <Col span={24}>
                     <Statistic title="Cuenta" value={data['NoCta']} />

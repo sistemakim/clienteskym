@@ -16,7 +16,7 @@ const Table = ({ title, data, columns }: TablePropTypes) =>
             dataSource={data}
             scroll={{ x: 800 }}
             bordered={true}
-            size='middle'
+            size='small'
         />
     </div>
 
