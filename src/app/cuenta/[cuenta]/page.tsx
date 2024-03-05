@@ -3,7 +3,7 @@ import Table from '@/components/cuenta/Table'
 import { getCuenta } from '../../api/cuenta'
 import { isValidNoCuenta } from '@/utils/isValidNoCuenta'
 import { redirect } from 'next/navigation'
-
+import { tablaAmortColumns, tablaPagosColumns } from '@/constants/columns'
 
 export default async function Cuenta({ params }: { params: { cuenta: string } }) {
 
@@ -22,11 +22,13 @@ export default async function Cuenta({ params }: { params: { cuenta: string } })
             <div className='px-5 py-2'>
                 <Table
                     title='Tabla de amortización'
+                    columns={tablaAmortColumns}
                     data={data[1]}
                 />
             </div>
             <div className='px-5 py-2'>
                 <Table
+                    columns={tablaPagosColumns}
                     title='Recibos de pago'
                     data={data[2]}
                 />
