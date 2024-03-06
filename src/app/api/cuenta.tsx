@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise';
 
-function parser(obj: any){
+function parser(obj: any) {
     const stringified = JSON.stringify(obj)
     const parsed = JSON.parse(stringified)
 
@@ -23,14 +23,17 @@ export async function getCuenta(cuenta: string) {
         });
 
         // execute will internally call prepare and query
-        const [results] = await connection.execute(resultsQuery,[cuenta]);
+        const [results] = await connection.execute(resultsQuery, [cuenta]);
         const parsedResults = parser(results)
-        
-        
-        const [tablaamort] = await connection.execute(tablaAmortQuery,[parsedResults[0].IdCta]);
-        const [tablapagos] = await connection.execute(tablaPagosQuery,[parsedResults[0].IdCta]);
 
-        return [parsedResults[0], parser(tablaamort), parser(tablapagos)]
+        if (parsedResults.length > 0) {
+            const [tablaamort] = await connection.execute(tablaAmortQuery, [parsedResults[0].IdCta]);
+            const [tablapagos] = await connection.execute(tablaPagosQuery, [parsedResults[0].IdCta]);
+            return [parsedResults[0], parser(tablaamort), parser(tablapagos)]
+        } else {
+            return [null, [], []]
+        }
+
     } catch (err) {
         console.log(err);
     }
