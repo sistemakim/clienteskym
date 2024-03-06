@@ -13,8 +13,6 @@ export default async function Cuenta({ params }: { params: { cuenta: string } })
 
     const result = await getCuenta(params.cuenta)
     const data: any = await result
-    console.log(data[0]);
-    
 
     return (
         <>

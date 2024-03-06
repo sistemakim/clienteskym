@@ -6,9 +6,15 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
 
   const pathname = usePathname()
-  const link = pathname == '/' ? 
-    {path: '/cuenta', label: 'Consultar cuenta'} : 
-    {path: '/', label: 'Inicio'}
+  let link = { path: '/cuenta', label: 'Consultar cuenta' }
+  switch (pathname) {
+    case '/cuenta':
+      link = { path: '/', label: 'Inicio' }
+      break;
+    default:
+      link = { path: '/cuenta', label: 'Consultar cuenta' }
+      break;
+  }
 
   return (
     <nav className="flex items-center justify-between  bg-white p-2 px-6 ">
