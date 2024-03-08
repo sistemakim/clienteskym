@@ -81,23 +81,6 @@ export const tablaAmortColumns: TableProps<any>['columns'] = [
         dataIndex: 'NvoSal',
         key: 'NvoSal',
     },
-    {
-        title: 'Punto Pago',
-        dataIndex: 'PuntPag',
-        key: 'PuntPag',
-        render: (text) => {
-
-            if (text == '') return null
-
-            let color = text == 'V' ? 'geekblue' : 'green';
-            if (text == 'A') {
-                color = 'red';
-            }
-            return (
-                <Tag color={color}>{text}</Tag>
-            )
-        }
-    },
 ];
 
 export const tablaPagosColumns: TableProps<DataType>['columns'] = [

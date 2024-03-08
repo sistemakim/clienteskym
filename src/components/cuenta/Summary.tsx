@@ -17,7 +17,7 @@ const Summary = (summaryObject: any) => {
                     <Statistic title="Cliente" value={data['Nombre']} />
                 </Col>
                 <Col span={12}>
-                    <Statistic title="Crédito" value={data['SalIni']} precision={2} prefix='$'/>
+                    <Statistic title="Crédito" value={data['SubTot0']} precision={2} prefix='$'/>
                 </Col>
                 <Col span={12}>
                     <Statistic title="Anticipo" value={data['Anticipo']} precision={2} prefix='$'/>
