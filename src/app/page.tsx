@@ -1,5 +1,4 @@
 import { FacebookOutlined } from "@ant-design/icons"
-import { getCuenta } from "./api/cuenta";
 
 export default function Home() {
 
