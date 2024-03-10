@@ -56,11 +56,11 @@ export const tablaAmortColumns: TableProps<any>['columns'] = [
         dataIndex: 'Abono',
         key: 'Abono',
     },
-    {
-        title: 'Int. Mort.',
-        dataIndex: 'IntMor',
-        key: 'IntMor',
-    },
+    // {
+    //     title: 'Int. Mort.',
+    //     dataIndex: 'IntMor',
+    //     key: 'IntMor',
+    // },
     {
         title: 'A Cuenta',
         dataIndex: 'ACuent',
