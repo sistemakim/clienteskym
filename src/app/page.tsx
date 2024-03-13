@@ -6,14 +6,21 @@ export default function Home() {
     <div>
 
       <div className="bg-primary flex-col flex items-center justify-center">
-        <div className="p-5">
+        <div className="p-5 mt-4">
           <h1 className="font-bold leading-8 text-3xl mb-2">Moda y accesorios KYM</h1>
           <h1 className="font-semibold text-2xl">Toda la elegancia a tu alcance</h1>
         </div>
-        <a href="https://www.facebook.com/modayaccesorioskym" className="my-5 p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
-          <FacebookOutlined className="text-2xl" />
-          <button className="ml-2">Ver artículos</button>
-        </a>
+        <h1 className="text-2xl font-bold mt-8">Ver artículos</h1>
+        <div className="flex mb-5">
+          <a href="https://www.facebook.com/modayaccesorioskym" className="mr-2 my-5 p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
+            <FacebookOutlined className="text-2xl" />
+            <button className="ml-2">Distribuidor 1</button>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100076075981516" className="my-5 p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
+            <FacebookOutlined className="text-2xl" />
+            <button className="ml-2">Distribuidor 2</button>
+          </a>
+        </div>
         <img src="/hero-image-group.png" alt="productos" width={350} />
       </div>
       {/* Logo cloud */}
