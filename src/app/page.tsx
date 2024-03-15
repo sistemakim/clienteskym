@@ -12,11 +12,11 @@ export default function Home() {
         </div>
         <h1 className="text-2xl font-bold mt-8">Ver artículos</h1>
         <div className="flex mb-5">
-          <a href="https://www.facebook.com/modayaccesorioskym" className="mr-2 my-5 p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
+          <a href="https://www.facebook.com/modayaccesorioskym" className="mr-1 sm:mr-2 my-5 p-2 sm:p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
             <FacebookOutlined className="text-2xl" />
             <button className="ml-2">Distribuidor 1</button>
           </a>
-          <a href="https://www.facebook.com/profile.php?id=100076075981516" className="my-5 p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
+          <a href="https://www.facebook.com/profile.php?id=100076075981516" className="my-5 p-2 sm:p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
             <FacebookOutlined className="text-2xl" />
             <button className="ml-2">Distribuidor 2</button>
           </a>
