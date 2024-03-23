@@ -10,7 +10,8 @@ export default function Home() {
           <h1 className="font-bold leading-8 text-3xl mb-2">Moda y accesorios KYM</h1>
           <h1 className="font-semibold text-2xl">Toda la elegancia a tu alcance</h1>
         </div>
-        <h1 className="text-2xl font-bold mt-8">Ver artículos</h1>
+        {/* Facebook section */}
+        {/* <h1 className="text-2xl font-bold mt-8">Ver artículos</h1>
         <div className="flex mb-5">
           <a href="https://www.facebook.com/modayaccesorioskym" className="mr-1 sm:mr-2 my-5 p-2 sm:p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
             <FacebookOutlined className="text-2xl" />
@@ -20,7 +21,7 @@ export default function Home() {
             <FacebookOutlined className="text-2xl" />
             <button className="ml-2">Distribuidor 2</button>
           </a>
-        </div>
+        </div> */}
         <img src="/hero-image-group.png" alt="productos" width={350} />
       </div>
       {/* Logo cloud */}

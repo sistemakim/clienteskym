@@ -19,11 +19,13 @@ export default async function Cuenta({ params }: { params: { cuenta: string } })
             {
                 data[0] != null ?
                     <div className='bg-primary py-4'>
+                        {/* Summary */}
                         <div className='px-5 py-2'>
                             <Summary
                                 data={data[0]}
                             />
                         </div>
+                        {/* Tabla amortizacion */}
                         <div className='px-5 py-2'>
                             <Table
                                 title='Tabla de amortización'
@@ -31,12 +33,20 @@ export default async function Cuenta({ params }: { params: { cuenta: string } })
                                 data={data[1]}
                             />
                         </div>
+                        {/* Recibos de pago */}
                         <div className='px-5 py-2'>
                             <Table
                                 columns={tablaPagosColumns}
                                 title='Recibos de pago'
                                 data={data[2]}
                             />
+                        </div>
+                        <div className='px-5 py-2'>
+                            <div className='bg-white rounded-xl p-4 text-center'>
+                                <h1 className='font-semibold'>Cualquier aclaración de tus pagos, mándanos un Whatsapp</h1>
+                                <h1 className='text-xl mt-3'>646 132 5082</h1>
+                                <h1>Marco Soto Lozano</h1>
+                            </div>
                         </div>
                     </div>
                     :
