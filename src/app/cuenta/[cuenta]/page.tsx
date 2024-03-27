@@ -45,7 +45,7 @@ export default async function Cuenta({ params }: { params: { cuenta: string } })
                             <div className='bg-white rounded-xl p-4 text-center'>
                                 <h1 className='font-semibold'>Cualquier aclaración de tus pagos, mándanos un Whatsapp</h1>
                                 <h1 className='text-xl mt-3'>646 132 5082</h1>
-                                <h1>Marco Soto Lozano</h1>
+                                <h1>Será un placer atenderte</h1>
                             </div>
                         </div>
                     </div>
