@@ -11,7 +11,7 @@ export const summaryQuery = `
                 SUM(gc_pags_cli.Importe) 
             FROM gc_pags_cli 
             WHERE gc_pags_cli.idCta = gc_cuentas.IdCta 
-            AND gc_pags_cli.TipPag = 'ABONO'), 0) 
+            AND gc_pags_cli.TipPag = 'ABONO' LIMIT 1), 0) 
             AS Abonos, 
         COALESCE(
             (SELECT 
@@ -19,7 +19,7 @@ export const summaryQuery = `
             FROM gc_pags_cli 
             AS anticipo 
             WHERE anticipo.idCta = gc_cuentas.IdCta 
-            AND anticipo.TipPag = 'ANTICIPO'), 0) 
+            AND anticipo.TipPag = 'ANTICIPO' LIMIT 1), 0) 
             AS Anticipo 
         FROM gc_cuentas 
         INNER JOIN gc_clientes 
