@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/layout/navbar";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
+import '@ant-design/v5-patch-for-react-19';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import es_Es from 'antd/locale/es_ES';

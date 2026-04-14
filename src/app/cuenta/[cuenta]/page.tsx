@@ -7,11 +7,13 @@ import { Button, Result } from 'antd';
 import { tablaAmortColumns, tablaPagosColumns } from '@/constants/columns'
 import Link from 'next/link'
 
-export default async function Cuenta({ params }: { params: { cuenta: string } }) {
+export default async function Cuenta({ params }: { params: Promise<{ cuenta: string }> }) {
 
-    isValidNoCuenta(params.cuenta) ? null : redirect('/cuenta')
+    const { cuenta } = await params
 
-    const result = await getCuenta(params.cuenta)
+    isValidNoCuenta(cuenta) ? null : redirect('/cuenta')
+
+    const result = await getCuenta(cuenta)
     const data: any = await result
 
     return (
