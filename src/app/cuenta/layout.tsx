@@ -9,7 +9,25 @@ export default function CuentaLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ConfigProvider locale={es_ES}>
+    <ConfigProvider
+      locale={es_ES}
+      theme={{
+        token: {
+          colorPrimary: '#1a1a1a',
+          colorBgContainer: '#ffffff',
+          colorBorder: 'rgba(26,26,26,0.15)',
+          colorText: '#1a1a1a',
+          colorTextSecondary: 'rgba(26,26,26,0.65)',
+          borderRadius: 12,
+          fontFamily: 'inherit',
+          controlHeight: 40,
+        },
+        components: {
+          Button: { primaryShadow: 'none' },
+          Statistic: { titleFontSize: 11 },
+        },
+      }}
+    >
       <AntdRegistry>{children}</AntdRegistry>
     </ConfigProvider>
   );

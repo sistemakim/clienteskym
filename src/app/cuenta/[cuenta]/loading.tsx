@@ -3,22 +3,18 @@ import { Spin } from 'antd';
 
 export default function Loading() {
     return (
-        <div className='bg-primary py-4'>
-            <div className='px-5 py-2'>
-                <div className='w-full h-[20rem] bg-white flex items-center justify-center rounded-xl'>
+        <div className='bg-paper'>
+            <div className='mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 sm:py-10'>
+                <div className='flex h-[20rem] w-full items-center justify-center rounded-2xl border border-ink/15 bg-white'>
                     <Spin indicator={<LoadingOutlined style={{ fontSize: 40 }} spin />} />
                 </div>
-            </div>
-            <div className='px-5 py-2'>
-                <div className='w-full h-[30rem] bg-white flex items-center justify-center rounded-xl'>
+                <div className='flex h-[30rem] w-full items-center justify-center rounded-2xl border border-ink/15 bg-white'>
                     <Spin indicator={<LoadingOutlined style={{ fontSize: 40 }} spin />} />
                 </div>
-            </div>
-            <div className='px-5 py-2'>
-                <div className='w-full h-[30rem] bg-white flex items-center justify-center rounded-xl'>
+                <div className='flex h-[30rem] w-full items-center justify-center rounded-2xl border border-ink/15 bg-white'>
                     <Spin indicator={<LoadingOutlined style={{ fontSize: 40 }} spin />} />
                 </div>
             </div>
         </div>
     )
-} 
+}

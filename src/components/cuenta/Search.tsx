@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Alert, Form, Input, Space, Button, Typography } from 'antd';
+import { Form, Input, Space, Button, Typography } from 'antd';
 import { useRouter } from 'next/navigation'
 
 const { Title } = Typography;
@@ -18,8 +18,8 @@ export default function Search() {
     }
 
     return (
-        <div className='bg-white p-5 rounded-lg'>
-            <Title level={4}>Número de cuenta</Title>
+        <div className='rounded-2xl border border-ink/15 bg-white p-5 sm:p-6'>
+            <Title level={4} className='!mb-4 !text-lg !font-semibold !tracking-tight !text-ink'>Número de cuenta</Title>
             <Form
                 name="input_cuenta"
                 layout="horizontal"

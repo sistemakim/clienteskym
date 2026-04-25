@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { Space, Table as AntdTable, Tag } from 'antd';
+import { Table as AntdTable } from 'antd';
 
 interface TablePropTypes {
     title: string,
@@ -9,13 +9,13 @@ interface TablePropTypes {
 }
 
 const Table = ({ title, data, columns }: TablePropTypes) =>
-    <div className='bg-white rounded-xl p-4'>
-        <h1 className='font-semibold mb-2'>{title}</h1>
+    <div className='rounded-2xl border border-ink/15 bg-white p-5 sm:p-6'>
+        <h2 className='mb-4 text-lg font-semibold tracking-tight text-ink'>{title}</h2>
         <AntdTable
             columns={columns}
             dataSource={data}
             scroll={{ x: 800 }}
-            bordered={true}
+            bordered={false}
             size='small'
         />
     </div>

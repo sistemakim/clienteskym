@@ -16,10 +16,10 @@ function MenuIcon({ open }: { open: boolean }) {
 }
 
 const NAV_LINKS = [
-  { href: '#busqueda', label: 'Inicio' },
-  { href: '#catalogo', label: 'Catálogo' },
-  { href: '#promo', label: 'Ofertas' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/#busqueda', label: 'Inicio' },
+  { href: '/#catalogo', label: 'Catálogo' },
+  { href: '/#promo', label: 'Ofertas' },
+  { href: '/#contacto', label: 'Contacto' },
 ];
 
 export default function Header() {
@@ -45,13 +45,13 @@ export default function Header() {
 
             <nav className="ml-6 hidden items-center gap-7 md:flex">
               {NAV_LINKS.map((l) => (
-                <a
+                <Link
                   key={l.href}
                   href={l.href}
                   className="text-sm font-medium text-ink/75 transition hover:text-ink"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -68,22 +68,15 @@ export default function Header() {
           <DisclosurePanel className="border-t border-ink/10 bg-white md:hidden">
             <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-3">
               {NAV_LINKS.map((l) => (
-                <a
+                <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => close()}
                   className="rounded-lg px-3 py-2 text-base font-medium text-ink/80 hover:bg-paper2"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
-              <Link
-                href="/cuenta"
-                onClick={() => close()}
-                className="mt-2 rounded-full border border-ink bg-ink px-4 py-2 text-center text-sm font-medium text-paper"
-              >
-                Consultar factura
-              </Link>
             </div>
           </DisclosurePanel>
         </>

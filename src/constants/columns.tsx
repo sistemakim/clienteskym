@@ -1,6 +1,7 @@
 'use client'
 import type { TableProps } from 'antd';
 import { Tag } from 'antd';
+import { formatMoney } from '@/utils/format';
 
 interface DataType {
     key: string;
@@ -9,6 +10,10 @@ interface DataType {
     address: string;
     tags: string[];
 }
+
+const renderMoney = (v: unknown) => (
+    <span className='tabular-nums'>{formatMoney(v as number | string | null | undefined)}</span>
+)
 
 export const tablaAmortColumns: TableProps<any>['columns'] = [
     {
@@ -22,7 +27,7 @@ export const tablaAmortColumns: TableProps<any>['columns'] = [
         key: 'FecPag',
     },
     {
-        title: 'Status',
+        title: 'Estatus',
         dataIndex: 'Status',
         key: 'Status',
         render: (text) => {
@@ -55,6 +60,7 @@ export const tablaAmortColumns: TableProps<any>['columns'] = [
         title: 'Abono',
         dataIndex: 'Abono',
         key: 'Abono',
+        render: renderMoney,
     },
     // {
     //     title: 'Int. Mort.',
@@ -65,21 +71,25 @@ export const tablaAmortColumns: TableProps<any>['columns'] = [
         title: 'A Cuenta',
         dataIndex: 'ACuent',
         key: 'ACuent',
+        render: renderMoney,
     },
     {
         title: 'Por Cobrar',
         dataIndex: 'PorCob',
         key: 'PorCob',
+        render: renderMoney,
     },
     {
         title: 'Saldo vencido',
         dataIndex: 'SalVen',
         key: 'SalVen',
+        render: renderMoney,
     },
     {
         title: 'Nuevo saldo',
         dataIndex: 'NvoSal',
         key: 'NvoSal',
+        render: renderMoney,
     },
 ];
 
@@ -113,9 +123,10 @@ export const tablaPagosColumns: TableProps<DataType>['columns'] = [
         title: 'Importe',
         dataIndex: 'Importe',
         key: 'Importe',
+        render: renderMoney,
     },
     {
-        title: 'Status',
+        title: 'Estatus',
         dataIndex: 'Status',
         key: 'Status',
         render: (text) => {
