@@ -12,7 +12,7 @@ import es_Es from 'antd/locale/es_ES';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Clientes KYM",
+  title: "Clientes HCE",
   description: "Consulta tu cuenta",
 };
 

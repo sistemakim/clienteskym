@@ -7,13 +7,13 @@ export default function Home() {
 
       <div className="bg-primary flex-col flex items-center justify-center">
         <div className="p-5 mt-4">
-          <h1 className="font-bold leading-8 text-3xl mb-2">Moda y accesorios KYM</h1>
+          <h1 className="font-bold leading-8 text-3xl mb-2">Moda y Tecnología HCE</h1>
           <h1 className="font-semibold text-2xl">Toda la elegancia a tu alcance</h1>
         </div>
         {/* Facebook section */}
         {/* <h1 className="text-2xl font-bold mt-8">Ver artículos</h1>
         <div className="flex mb-5">
-          <a href="https://www.facebook.com/modayaccesorioskym" className="mr-1 sm:mr-2 my-5 p-2 sm:p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
+          <a href="https://www.facebook.com/modayaccesorios" className="mr-1 sm:mr-2 my-5 p-2 sm:p-3 bg-action text-white font-bold rounded-lg text-xl flex items-center">
             <FacebookOutlined className="text-2xl" />
             <button className="ml-2">Distribuidor 1</button>
           </a>
