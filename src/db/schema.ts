@@ -3,8 +3,8 @@ import { mysqlTable, int, varchar, decimal, datetime } from 'drizzle-orm/mysql-c
 export const gcTablaAmort = mysqlTable('gc_tablaamort', {
     IdTA: int('IdTA').primaryKey(),
     IdCta: int('IdCta').notNull(),
-    NoPag: int('NoPag'),
-    FecPag1: datetime('FecPag1'),
+    NoPag: varchar('NoPag', { length: 16 }),
+    FecPag: datetime('FecPag1'),
     Abono: decimal('Abono', { precision: 14, scale: 2 }),
     IntMor: decimal('IntMor', { precision: 14, scale: 2 }),
     ACuent: decimal('ACuent', { precision: 14, scale: 2 }),

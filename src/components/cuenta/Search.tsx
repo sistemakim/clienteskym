@@ -1,11 +1,12 @@
 'use client'
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { isValidNoCuenta } from '@/utils/isValidNoCuenta';
 
 export default function Search({ styleVariant = "primary"} : { styleVariant?: string }) {
 
     const router = useRouter();
+    const [isPending, startTransition] = useTransition();
 
     const [value, setValue] = useState('');
     const [error, setError] = useState<string | null>(null);
@@ -22,7 +23,9 @@ export default function Search({ styleVariant = "primary"} : { styleVariant?: st
         return;
         }
         setError(null);
-        router.push(`/cuenta/${trimmed}`);
+        startTransition(() => {
+            router.push(`/cuenta/${trimmed}`);
+        });
     };
 
     const formVariants = {
@@ -67,14 +70,16 @@ export default function Search({ styleVariant = "primary"} : { styleVariant?: st
                 spellCheck={false}
                 inputMode="text"
                 enterKeyHint="search"
-                className="w-full bg-transparent py-2.5 text-base text-ink placeholder:text-ink/40 focus:outline-none"
+                disabled={isPending}
+                className="w-full bg-transparent py-2.5 text-base text-ink placeholder:text-ink/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
                 />
             </div>
             <button
                 type="submit"
-                className={formButtonVariants[styleVariant]}
+                disabled={isPending}
+                className={`${formButtonVariants[styleVariant]} disabled:cursor-not-allowed disabled:opacity-60`}
             >
-                Buscar →
+                {isPending ? 'Buscando…' : 'Buscar →'}
             </button>
             </form>
             {error && (

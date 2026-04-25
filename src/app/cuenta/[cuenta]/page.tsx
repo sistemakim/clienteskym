@@ -43,11 +43,13 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
                     title='Tabla de amortización'
                     columns={tablaAmortColumns}
                     data={data[1]}
+                    rowKey='IdTA'
                 />
                 <Table
                     columns={tablaPagosColumns}
                     title='Recibos de pago'
                     data={data[2]}
+                    rowKey='IdPagsCli'
                 />
                 <section className='rounded-2xl border border-ink/15 bg-white p-6 text-center'>
                     <p className='text-sm font-medium text-ink/70'>

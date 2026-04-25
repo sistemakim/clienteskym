@@ -40,10 +40,10 @@ export default function Summary({ data }: { data: SummaryData }) {
 
                         <div className="min-w-0 ml-4">
                             <p className="truncate text-2xl font-semibold tracking-tight text-ink">
-                                {name}
-                            </p>
-                            <p className="mt-1 text-sm uppercase tracking-[0.18em] text-ink/55">
                                 Cuenta · {data.NoCta ?? '—'}
+                            </p>
+                            <p className="mt-1/2 text-md uppercase tracking-[0.18em] text-ink/55">
+                                {name}
                             </p>
                         </div>
                     </div>
