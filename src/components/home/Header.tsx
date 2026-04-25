@@ -31,7 +31,7 @@ export default function Header() {
     >
       {({ open, close }) => (
         <>
-          <div className="mx-auto flex max-w-7xl items-center gap-6 px-5 py-3 sm:px-8">
+          <div className="mx-auto flex md:justify-between items-center gap-6 px-5 py-3 sm:px-8">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.webp"
@@ -39,12 +39,14 @@ export default function Header() {
                 width={60}
                 height={60}
               />
+              {/*
               <span className="leading-tight">
                 <span className="block text-lg font-semibold tracking-tight text-ink">HCE</span>
               </span>
+              */}
             </Link>
 
-            <nav className="ml-6 hidden items-center gap-7 md:flex">
+            <nav className="ml-6 hidden gap-7 md:flex md:items-center">
               {NAV_LINKS.map((l) => (
                 <Link
                   key={l.href}

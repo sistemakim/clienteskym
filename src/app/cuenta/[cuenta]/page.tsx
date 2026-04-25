@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation'
 import { Button, Result } from 'antd';
 import { tablaAmortColumns, tablaPagosColumns } from '@/constants/columns'
 import Link from 'next/link'
+import Search from '@/components/cuenta/Search'
 
 export default async function Cuenta({ params }: { params: Promise<{ cuenta: string }> }) {
 
@@ -18,24 +19,25 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
 
     if (data[0] == null) {
         return (
-            <div className='bg-paper'>
-                <Result
-                    status='404'
-                    title='Número de cuenta no encontrado'
-                    subTitle='Parece que el número de cuenta ingresado no existe, intente con otro, por favor.'
-                    extra={
-                        <Link href={'/cuenta'}>
-                            <Button type='primary'>Regresar</Button>
-                        </Link>
-                    }
-                />
-            </div>
+            <Result
+                status='404'
+                title='Número de cuenta no encontrado'
+                subTitle='Parece que el número de cuenta ingresado no existe, intente con otro, por favor.'
+                extra={
+                    <Link href={'/'}>
+                        <Button type='primary'>Regresar</Button>
+                    </Link>
+                }
+            />
         )
     }
 
     return (
-        <div className='bg-paper'>
-            <div className='mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 sm:py-10'>
+        <div className='bg-paper p-5'>
+            <Search
+                styleVariant='compact'
+            />
+            <div className='mx-auto flex max-w-7xl flex-col gap-5 py-4 sm:px-8 sm:py-10'>
                 <Summary data={data[0]} />
                 <Table
                     title='Tabla de amortización'

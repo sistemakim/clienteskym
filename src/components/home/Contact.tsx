@@ -26,7 +26,7 @@ export default function Contact() {
                 </a>
               }
             />
-            <InfoRow icon="⌖" label="Dirección" value="Av. 27 de Febrero #144, SDQ" />
+            <InfoRow icon="⌖" label="Dirección" value="Privada Circonia #1268 Col. Los Encinos" />
             <InfoRow icon="⏱" label="Horario" value="Lun–Sáb · 9:00 — 19:00" />
             <InfoRow
               icon="@"

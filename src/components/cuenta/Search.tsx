@@ -1,54 +1,85 @@
 'use client'
-import React from 'react'
-import { Form, Input, Space, Button, Typography } from 'antd';
-import { useRouter } from 'next/navigation'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { isValidNoCuenta } from '@/utils/isValidNoCuenta';
 
-const { Title } = Typography;
+export default function Search({ styleVariant = "primary"} : { styleVariant?: string }) {
 
-export default function Search() {
+    const router = useRouter();
 
-    const router = useRouter()
+    const [value, setValue] = useState('');
+    const [error, setError] = useState<string | null>(null);
 
-    const onFinish = (value: { no_cuenta: string }) => {
-        router.push(`/cuenta/${value.no_cuenta}`)
+    const onSubmit = (e: { preventDefault: () => void }) => {
+        e.preventDefault();
+        const trimmed = value.trim();
+        if (!trimmed) {
+        setError('Ingrese su número de cuenta');
+        return;
+        }
+        if (!isValidNoCuenta(trimmed) || trimmed.length > 30) {
+        setError('Número de cuenta inválido');
+        return;
+        }
+        setError(null);
+        router.push(`/cuenta/${trimmed}`);
+    };
+
+    const formVariants = {
+        primary: "mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-2xl border bg-white p-2 sm:flex-row sm:items-center sm:rounded-full sm:p-2 sm:pl-5",
+        compact: "flex max-w-xl flex-row items-center gap-2 rounded-full border bg-white p-2 pl-5"
     }
 
-    const onFinishFailed = () => {
-        console.log('Failed!');
+    const formElementVariants = {
+        primary: "flex flex-1 items-center gap-2 px-3 sm:px-0",
+        compact: "flex flex-1 flex-row items-center gap-2 px-3 sm:px-0"
+
+    }
+
+    const formButtonVariants = {
+        primary: "w-full rounded-xl bg-ink px-5 py-3 text-base font-medium text-paper transition hover:bg-ink2 sm:w-auto sm:rounded-full sm:py-2.5 sm:text-sm",
+        compact: "shrink-0 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-ink2"
+    }
+
+    const placeholderVariants = {
+        primary: "Ingrese su número de cuenta",
+        compact: "Ingrese su cuenta"
     }
 
     return (
-        <div className='rounded-2xl border border-ink/15 bg-white p-5 sm:p-6'>
-            <Title level={4} className='!mb-4 !text-lg !font-semibold !tracking-tight !text-ink'>Número de cuenta</Title>
-            <Form
-                name="input_cuenta"
-                layout="horizontal"
-                size='large'
-                autoComplete="off"
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
+        <>
+            <form
+                onSubmit={onSubmit}
+                className={formVariants[styleVariant]}
             >
-                <Form.Item
-                    hasFeedback
-                    name="no_cuenta"
-                    validateFirst
-                    rules={[
-                        { max: 30, message: 'Número de cuenta inválido' },
-                        { pattern: /^[a-zA-Z\d]+$/, message: 'Número de cuenta inválido' },
-                        { min: 1, message: 'Ingrese su número de cuenta' },
-                        { whitespace: true, message: 'Ingrese su número de cuenta' },
-                        { required: true, message: 'Ingrese su número de cuenta' }
-                    ]}
-                >
-                    <Space.Compact style={{ width: '100%' }}>
-                        <Input
-                            placeholder="Ingrese su número de cuenta"
-                            allowClear={true}
-                        />
-                        <Button type="primary" htmlType='submit'>Buscar</Button>
-                    </Space.Compact>
-                </Form.Item>
-            </Form>
-        </div>
+            <div className={formElementVariants[styleVariant]}>
+                <span aria-hidden className="text-ink/50">#</span>
+                <input
+                value={value}
+                onChange={(e) => {
+                    setValue(e.target.value);
+                    if (error) setError(null);
+                }}
+                placeholder={placeholderVariants[styleVariant]}
+                aria-label="Número de factura"
+                autoCapitalize="characters"
+                autoCorrect="off"
+                spellCheck={false}
+                inputMode="text"
+                enterKeyHint="search"
+                className="w-full bg-transparent py-2.5 text-base text-ink placeholder:text-ink/40 focus:outline-none"
+                />
+            </div>
+            <button
+                type="submit"
+                className={formButtonVariants[styleVariant]}
+            >
+                Buscar →
+            </button>
+            </form>
+            {error && (
+                <p className="mt-3 text-xs text-gold">{error}</p>
+            )}
+        </>
     )
 }
