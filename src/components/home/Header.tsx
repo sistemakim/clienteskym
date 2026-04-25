@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -32,14 +33,14 @@ export default function Header() {
         <>
           <div className="mx-auto flex max-w-7xl items-center gap-6 px-5 py-3 sm:px-8">
             <Link href="/" className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-ink bg-ink text-gold ring-2 ring-inset ring-gold">
-                <span className="text-[11px] font-semibold tracking-wider">HCE</span>
-              </span>
+              <Image
+                src="/logo.webp"
+                alt="HCE logo"
+                width={50}
+                height={50}
+              />
               <span className="leading-tight">
                 <span className="block text-lg font-semibold tracking-tight text-ink">HCE</span>
-                <span className="block text-[9px] uppercase tracking-[0.18em] text-ink/55">
-                  Moda · Tecnología · Hogar
-                </span>
               </span>
             </Link>
 

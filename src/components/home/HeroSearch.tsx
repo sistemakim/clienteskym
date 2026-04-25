@@ -49,7 +49,7 @@ export default function HeroSearch() {
 
       <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 sm:py-28">
         <span className="text-[11px] uppercase tracking-[0.22em] text-paper/65">
-          Consulte su cuenta
+          Moda • Tecnología • Hogar
         </span>
         <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
           <span className="text-gold">Todo </span>en un solo lugar.
