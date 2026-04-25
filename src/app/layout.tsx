@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/layout/navbar";
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { ConfigProvider } from 'antd';
-import '@ant-design/v5-patch-for-react-19';
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import es_Es from 'antd/locale/es_ES';
+import Header from "../components/home/Header";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,14 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <ConfigProvider locale={es_Es}>
-        <body className={inter.className}>
-          <Navbar />
-          <AntdRegistry>{children}</AntdRegistry>
-          <Analytics/>
-          <SpeedInsights/>
-        </body>
-      </ConfigProvider>
+      <body className={inter.className}>
+        <Header />
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

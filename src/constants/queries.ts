@@ -5,7 +5,8 @@ export const summaryQuery = `
         gc_cuentas.NoCta, 
         gc_cuentas.TotPorCob, 
         gc_cuentas.SubTot0, 
-        gc_clientes.Nombre, 
+        gc_clientes.Nombre,
+        gc_clientes.Puntos AS Puntos,
         COALESCE(
             (SELECT 
                 SUM(gc_pags_cli.Importe) 

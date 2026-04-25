@@ -28,6 +28,9 @@ const Summary = (summaryObject: any) => {
                 <Col span={12}>
                     <Statistic title="Saldo" value={data['TotPorCob']} precision={2} prefix='$'/>
                 </Col>
+                <Col span={24}>
+                    <Statistic title="Puntos disponibles" value={data['Puntos']} />
+                </Col>
             </Row>
         </div>
     )

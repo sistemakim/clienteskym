@@ -15,8 +15,17 @@ const config: Config = {
       },
       colors: {
         'primary': '#c3d6e5',
-        'action': '#01b5c1'
-      }
+        'action': '#01b5c1',
+        'ink': '#1a1a1a',
+        'ink2': '#2b2b2b',
+        'paper': '#fafaf7',
+        'paper2': '#f3f1ea',
+        'gold': '#b8893a',
+        'goldSoft': '#e8d9b6',
+      },
+      boxShadow: {
+        'gold': '4px 4px 0 0 #b8893a',
+      },
     },
   },
   plugins: [],
