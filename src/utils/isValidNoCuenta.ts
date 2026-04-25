@@ -1,9 +1,5 @@
-export function isValidNoCuenta (param: string) {
-    const newValue: string = param;
-    const regexPattern = /^[a-zA-Z\d]+$/;
+const RE = /^[A-Za-z0-9]{1,16}$/;
 
-    if (regexPattern.test(newValue) || newValue === '' ) {
-        return true
-    }
-    return false
-};
+export function isValidNoCuenta(param: unknown): param is string {
+    return typeof param === 'string' && RE.test(param);
+}
