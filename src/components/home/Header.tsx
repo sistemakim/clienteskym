@@ -36,8 +36,8 @@ export default function Header() {
               <Image
                 src="/logo.webp"
                 alt="HCE logo"
-                width={50}
-                height={50}
+                width={60}
+                height={60}
               />
               <span className="leading-tight">
                 <span className="block text-lg font-semibold tracking-tight text-ink">HCE</span>

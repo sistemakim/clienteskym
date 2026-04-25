@@ -41,10 +41,6 @@ export default function HeroSearch() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(135deg, rgba(255,255,255,0.6) 0 1px, transparent 1px 14px)',
-        }}
       />
 
       <div className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 sm:py-28">
@@ -70,7 +66,7 @@ export default function HeroSearch() {
                 setValue(e.target.value);
                 if (error) setError(null);
               }}
-              placeholder="Ej. F-2026-00148"
+              placeholder="Ingrese su número de cuenta"
               aria-label="Número de factura"
               autoCapitalize="characters"
               autoCorrect="off"
