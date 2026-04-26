@@ -1,10 +1,85 @@
+const SOCIALS = [
+  { label: 'f', href: 'https://facebook.com' },
+  { label: 'ig', href: 'https://instagram.com' },
+  { label: 'tt', href: 'https://tiktok.com' },
+  { label: 'yt', href: 'https://youtube.com' },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-paper">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-8 text-[11px] uppercase tracking-[0.16em] text-ink/55 sm:flex-row sm:px-8">
-        <span>© {new Date().getFullYear()} HCE</span>
-        <span>Todo en un solo lugar</span>
+    <footer id="contacto" className="border-t border-ink/10 bg-paper">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+        <div className="mx-auto flex max-w-xl flex-col gap-5 rounded-2xl border border-ink/15 bg-white p-6 sm:p-8">
+          <div>
+            <h2 className="mt-2 text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Contáctenos.
+            </h2>
+          </div>
+
+          <InfoRow
+            icon="☏"
+            label="Teléfono · WhatsApp"
+            value={
+              <a href="https://wa.me/526461935224" className="hover:text-gold">
+                (646) 193 · 5224
+              </a>
+            }
+          />
+          <InfoRow icon="⌖" label="Dirección" value="Privada Circonia #1268 Col. Los Encinos" />
+          <InfoRow icon="⏱" label="Horario" value="Lun–Sáb · 9:00 — 19:00" />
+          <InfoRow
+            icon="@"
+            label="Redes"
+            value={
+              <div className="mt-1.5 flex gap-2">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="grid h-9 w-9 place-items-center rounded-full border border-ink/30 text-xs text-ink transition hover:bg-paper"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            }
+          />
+        </div>
+      </div>
+
+      <div className="border-t border-ink/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-8 text-[11px] uppercase tracking-[0.16em] text-ink/55 sm:flex-row sm:px-8">
+          <span>© {new Date().getFullYear()} HCE</span>
+          <span>Todo en un solo lugar</span>
+        </div>
       </div>
     </footer>
+  );
+}
+
+function InfoRow({
+  icon,
+  label,
+  value,
+}: {
+  icon: string;
+  label: string;
+  value: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-3 border-b border-dashed border-ink/15 pb-4 last:border-b-0 last:pb-0">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ink/25 text-sm text-ink">
+        {icon}
+      </span>
+      <div className="flex-1">
+        <p className="text-[10px] uppercase tracking-[0.18em] text-ink/55">
+          {label}
+        </p>
+        <div className="mt-1 text-base text-ink">{value}</div>
+      </div>
+    </div>
   );
 }
