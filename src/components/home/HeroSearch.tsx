@@ -26,7 +26,7 @@ export default function HeroSearch() {
 
       <StaggerParent
         onMount
-        className="mx-auto max-w-4xl px-5 py-32 text-center sm:px-8 sm:py-36"
+        className="mx-auto max-w-4xl px-5 pt-40 pb-32 text-center sm:px-8 sm:py-36"
       >
         <StaggerItem>
           <span className="text-[11px] uppercase tracking-[0.22em] text-paper/65">
@@ -34,12 +34,12 @@ export default function HeroSearch() {
           </span>
         </StaggerItem>
         <StaggerItem>
-          <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+          <h1 className="mt-2 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
             <span className="text-gold">Todo </span>en un solo lugar.
           </h1>
         </StaggerItem>
         <StaggerItem>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-paper/70 sm:text-base">
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-paper/70 sm:text-base">
             Ingresa el número de su cuenta para consultar todos los detalles.
           </p>
         </StaggerItem>
