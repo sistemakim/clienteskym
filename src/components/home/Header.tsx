@@ -3,6 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { EASE } from '../motion/motion-tokens';
 
 function MenuIcon({ open }: { open: boolean }) {
   return open ? (
@@ -23,11 +27,115 @@ const NAV_LINKS = [
   { href: '/#contacto', label: 'Contacto' },
 ];
 
+function ScrollLock({ active }: { active: boolean }) {
+  useEffect(() => {
+    if (!active) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [active]);
+  return null;
+}
+
+function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  return createPortal(
+    <AnimatePresence>
+      {open && (
+        <div className="md:hidden">
+          <ScrollLock active={open} />
+          <motion.div
+            key="backdrop"
+            className="fixed inset-0 z-[100] bg-ink/45 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'linear' as const }}
+            onClick={onClose}
+            aria-hidden
+          />
+          <motion.aside
+            key="drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menú"
+            className="fixed inset-y-0 right-0 z-[110] flex w-[82vw] max-w-sm flex-col bg-white shadow-2xl"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            <div className="flex items-center justify-between border-b border-ink/10 px-6 py-5">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-ink/55">
+                Menú
+              </span>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Cerrar menú"
+                className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink/70 transition hover:bg-paper hover:text-ink"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
+            </div>
+
+            <nav className="flex flex-col px-2 pt-2">
+              {NAV_LINKS.map((l, i) => (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.35,
+                    ease: EASE,
+                    delay: 0.15 + i * 0.07,
+                  }}
+                >
+                  <Link
+                    href={l.href}
+                    onClick={onClose}
+                    className="group relative flex items-center justify-between border-b border-ink/[0.07] px-8 py-5 text-base font-medium tracking-tight text-ink/85 transition hover:text-ink"
+                  >
+                    <span className="flex items-center gap-3">
+                      <span>{l.label}</span>
+                    </span>
+                    <span className="text-ink/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-gold">
+                      →
+                    </span>
+                    <span className="pointer-events-none absolute inset-y-0 left-0 w-[2px] origin-top scale-y-0 bg-gold transition-transform duration-300 group-hover:scale-y-100" />
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.45 }}
+              className="mt-auto border-t border-ink/10 px-6 py-5 text-[11px] uppercase tracking-[0.2em] text-ink/45"
+            >
+              Moda • Tecnología • Hogar
+            </motion.div>
+          </motion.aside>
+        </div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
+}
+
 export default function Header() {
   return (
     <Disclosure
       as="header"
-      className="sticky top-0 z-50 border-b border-ink/10 bg-white/85 backdrop-blur"
+      className="sticky top-0 z-50 border-b border-ink/10 bg-white/65 backdrop-blur"
     >
       {({ open, close }) => (
         <>
@@ -39,11 +147,6 @@ export default function Header() {
                 width={60}
                 height={60}
               />
-              {/*
-              <span className="leading-tight">
-                <span className="block text-lg font-semibold tracking-tight text-ink">HCE</span>
-              </span>
-              */}
             </Link>
 
             <nav className="ml-6 hidden gap-7 md:flex md:items-center">
@@ -68,20 +171,8 @@ export default function Header() {
             </div>
           </div>
 
-          <DisclosurePanel className="border-t border-ink/10 bg-white md:hidden">
-            <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-3">
-              {NAV_LINKS.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => close()}
-                  className="rounded-lg px-3 py-2 text-base font-medium text-ink/80 hover:bg-paper2"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          </DisclosurePanel>
+          <DisclosurePanel static as="div" className="hidden" />
+          <MobileDrawer open={open} onClose={close} />
         </>
       )}
     </Disclosure>

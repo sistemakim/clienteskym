@@ -21,8 +21,8 @@ export default function Contact() {
               icon="☏"
               label="Teléfono · WhatsApp"
               value={
-                <a href="https://wa.me/18095550143" className="hover:text-gold">
-                  +1 (809) 555 · 0143
+                <a href="https://wa.me/526461935224" className="hover:text-gold">
+                  (646) 193 · 5224
                 </a>
               }
             />

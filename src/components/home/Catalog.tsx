@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { EASE } from '../motion/motion-tokens';
 
 type Product = {
   name: string;
@@ -23,9 +25,32 @@ const PLACEHOLDER_BG =
 
 export default function Catalog() {
   const railRef = useRef<HTMLDivElement | null>(null);
+  const reduce = useReducedMotion();
 
   const scroll = (dir: -1 | 1) => {
     railRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  };
+
+  const railVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: reduce ? 0 : 0.1,
+        delayChildren: reduce ? 0 : 0.1,
+      },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: reduce ? 0 : 28, scale: reduce ? 1 : 0.94 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: reduce
+        ? { duration: 0.15, ease: 'linear' as const }
+        : { duration: 0.6, ease: EASE },
+    },
   };
 
   return (
@@ -34,10 +59,10 @@ export default function Catalog() {
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] text-ink/55">
-              Mejores ventas
+              Todo a tu alcance
             </p>
             <h2 className="mt-2 text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Más vendidos esta semana.
+              Conoce nuestra gama de productos
             </h2>
           </div>
           <div className="hidden items-center gap-3 sm:flex">
@@ -66,13 +91,18 @@ export default function Catalog() {
           </div>
         </div>
 
-        <div
+        <motion.div
           ref={railRef}
           className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3"
+          variants={railVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
         >
           {PRODUCTS.map((p) => (
-            <article
+            <motion.article
               key={p.name}
+              variants={cardVariants}
               className="flex w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-xl border border-ink/15 bg-white sm:w-[280px]"
             >
               <div
@@ -101,9 +131,9 @@ export default function Catalog() {
                   <span className="font-medium text-ink">{p.price}</span>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

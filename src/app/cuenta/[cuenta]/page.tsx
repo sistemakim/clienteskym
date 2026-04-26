@@ -7,6 +7,7 @@ import { Button, Result } from 'antd';
 import { tablaAmortColumns, tablaPagosColumns } from '@/constants/columns'
 import Link from 'next/link'
 import Search from '@/components/cuenta/Search'
+import Contact from '@/components/home/Contact'
 
 export default async function Cuenta({ params }: { params: Promise<{ cuenta: string }> }) {
 
@@ -51,20 +52,7 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
                     data={data[2]}
                     rowKey='IdPagsCli'
                 />
-                <section className='rounded-2xl border border-ink/15 bg-white p-6 text-center'>
-                    <p className='text-sm font-medium text-ink/70'>
-                        Cualquier aclaración de tus pagos, mándanos un WhatsApp
-                    </p>
-                    <a
-                        href='https://wa.me/16461935224'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='mt-3 inline-block text-2xl font-semibold tracking-tight text-ink hover:text-gold'
-                    >
-                        646 193 5224
-                    </a>
-                    <p className='mt-1 text-sm text-ink/55'>Será un placer atenderte</p>
-                </section>
+                <Contact/>
             </div>
         </div>
     )
