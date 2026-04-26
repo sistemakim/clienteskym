@@ -3,7 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { EASE } from '../motion/motion-tokens';
@@ -132,20 +138,30 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
 }
 
 export default function Header() {
+  const { scrollY } = useScroll();
+  const bgAlpha = useTransform(scrollY, [0, 80], [0.88, 0.55], { clamp: true });
+  const shadowAlpha = useTransform(scrollY, [0, 80], [0, 0.25], { clamp: true });
+  const backgroundColor = useMotionTemplate`rgba(255, 255, 255, ${bgAlpha})`;
+  const boxShadow = useMotionTemplate`0 4px 24px -12px rgba(26, 26, 26, ${shadowAlpha})`;
+
   return (
     <Disclosure
       as="header"
-      className="sticky top-0 z-50 border-b border-ink/10 bg-white/65 backdrop-blur"
+      className="fixed inset-x-0 top-0 z-50"
     >
       {({ open, close }) => (
         <>
-          <div className="mx-auto flex md:justify-between items-center gap-6 px-5 py-3 sm:px-8">
+          <motion.div
+            style={{ backgroundColor, boxShadow }}
+            className="w-full backdrop-blur-md"
+          >
+            <div className="mx-auto flex max-w-7xl items-center gap-6 px-5 py-3 sm:px-8 md:justify-between">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.webp"
                 alt="HCE logo"
-                width={60}
-                height={60}
+                width={50}
+                height={50}
               />
             </Link>
 
@@ -169,7 +185,8 @@ export default function Header() {
                 <MenuIcon open={open} />
               </DisclosureButton>
             </div>
-          </div>
+            </div>
+          </motion.div>
 
           <DisclosurePanel static as="div" className="hidden" />
           <MobileDrawer open={open} onClose={close} />

@@ -26,7 +26,7 @@ export default function HeroSearch() {
 
       <StaggerParent
         onMount
-        className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 sm:py-28"
+        className="mx-auto max-w-4xl px-5 py-32 text-center sm:px-8 sm:py-36"
       >
         <StaggerItem>
           <span className="text-[11px] uppercase tracking-[0.22em] text-paper/65">

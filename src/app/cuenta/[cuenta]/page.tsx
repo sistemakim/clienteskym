@@ -34,7 +34,7 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
     }
 
     return (
-        <div className='bg-paper p-5'>
+        <div className='bg-paper p-5 pt-24'>
             <Search
                 styleVariant='compact'
             />
