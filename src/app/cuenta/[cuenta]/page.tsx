@@ -7,7 +7,6 @@ import { Button, Result } from 'antd';
 import { tablaAmortColumns, tablaPagosColumns } from '@/constants/columns'
 import Link from 'next/link'
 import Search from '@/components/cuenta/Search'
-import Contact from '@/components/home/Contact'
 
 export default async function Cuenta({ params }: { params: Promise<{ cuenta: string }> }) {
 
@@ -52,7 +51,6 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
                     data={data[2]}
                     rowKey='IdPagsCli'
                 />
-                <Contact/>
             </div>
         </div>
     )
