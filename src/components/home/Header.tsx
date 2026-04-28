@@ -27,10 +27,10 @@ function MenuIcon({ open }: { open: boolean }) {
 }
 
 const NAV_LINKS = [
-  { href: '/#busqueda', label: 'Inicio' },
-  { href: '/#facebook', label: 'Facebook' },
+  { href: '/#buscador', label: 'Buscador' },
+  { href: '/#facebook', label: 'Posts de Facebook' },
   { href: '/#encargos', label: 'Encargos' },
-  { href: '/#catalogo', label: 'Catálogo' },
+  { href: '/#gamadeproductos', label: 'Gama de productos' },
   { href: '/#contacto', label: 'Contacto' },
 ];
 

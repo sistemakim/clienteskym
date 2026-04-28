@@ -15,7 +15,7 @@ const VALUE_PROPS = [
     'Encargos a Estados Unidos',
 ];
 
-export default function Catalog() {
+export default function ProductRange() {
     const reduce = useReducedMotion();
 
     const listVariants: Variants = {
@@ -51,7 +51,7 @@ export default function Catalog() {
     };
 
     return (
-        <section id="catalogo" className="bg-white">
+        <section id="gamadeproductos" className="bg-white">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-14 sm:px-8 sm:py-20 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] md:gap-16">
                 <motion.div
                     variants={leftVariants}

@@ -8,7 +8,7 @@ export default function HeroSearch() {
 
   return (
     <section
-      id="busqueda"
+      id="buscador"
       className="relative isolate overflow-hidden bg-ink text-paper"
     >
       <div
