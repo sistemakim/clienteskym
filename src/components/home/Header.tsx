@@ -27,8 +27,8 @@ function MenuIcon({ open }: { open: boolean }) {
 }
 
 const NAV_LINKS = [
-  { href: '/#buscador', label: 'Buscador' },
-  { href: '/#facebook', label: 'Posts de Facebook' },
+  { href: '/#buscador', label: 'Inicio' },
+  { href: '/#facebook', label: 'Posts' },
   { href: '/#encargos', label: 'Encargos' },
   { href: '/#gamadeproductos', label: 'Gama de productos' },
   { href: '/#contacto', label: 'Contacto' },
