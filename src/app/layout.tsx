@@ -22,13 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <Suspense>
-        <FormbricksProvider/>
-      </Suspense>
       <body className={inter.className}>
         <Header />
         {children}
         <Footer />
+        <Suspense>
+          <FormbricksProvider/>
+        </Suspense>
         <Analytics />
         <SpeedInsights />
       </body>
