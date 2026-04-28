@@ -28,8 +28,8 @@ function MenuIcon({ open }: { open: boolean }) {
 
 const NAV_LINKS = [
   { href: '/#busqueda', label: 'Inicio' },
+  { href: '/#novedades', label: 'Novedades' },
   { href: '/#catalogo', label: 'Catálogo' },
-  { href: '/#promo', label: 'Ofertas' },
   { href: '/#contacto', label: 'Contacto' },
 ];
 

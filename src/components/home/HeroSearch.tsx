@@ -40,7 +40,7 @@ export default function HeroSearch() {
         </StaggerItem>
         <StaggerItem>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-paper/70 sm:text-base">
-            Consulte todos los detalles de su cuenta.
+            Tu cuenta, clara y accesible en todo momento.
           </p>
         </StaggerItem>
         <StaggerItem>

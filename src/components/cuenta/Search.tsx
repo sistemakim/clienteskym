@@ -15,7 +15,7 @@ export default function Search({ styleVariant = "primary"} : { styleVariant?: "p
         e.preventDefault();
         const trimmed = value.trim();
         if (!trimmed) {
-        setError('Ingrese su número de cuenta');
+        setError('Ingresa tu número de cuenta');
         return;
         }
         if (!isValidNoCuenta(trimmed) || trimmed.length > 30) {
@@ -45,8 +45,8 @@ export default function Search({ styleVariant = "primary"} : { styleVariant?: "p
     }
 
     const placeholderVariants = {
-        primary: "Ingrese su número de cuenta",
-        compact: "Ingrese su cuenta"
+        primary: "Ingresa tu número de cuenta",
+        compact: "Ingresa tu cuenta"
     }
 
     return (

@@ -2,7 +2,7 @@ import Reveal from '../motion/Reveal';
 
 export default function PromoBanner() {
   return (
-    <section id="promo" className="bg-paper">
+    <section id="novedades" className="bg-paper">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
         <Reveal intensity="strong" className="flex flex-col items-stretch gap-6 rounded-2xl border border-ink/15 bg-goldSoft p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
           <div
