@@ -50,6 +50,14 @@ export default function Summary({ data }: { data: SummaryData }) {
                         </div>
                     </div>
 
+                    <div className="md:mt-auto">
+                        <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-goldSoft px-3 py-1.5 text-md font-medium text-ink">
+                            <span aria-hidden>★</span>
+                            <span className="tabular-nums">{intg(data.Puntos)}</span>
+                            <span>puntos disponibles</span>
+                        </span>
+                    </div>
+
                     {(data.CobNom || data.CobTel) && (
                         <div className="flex flex-col gap-2 rounded-xl border border-ink/10 p-3 sm:p-4">
                             <p className="text-[10px] uppercase tracking-[0.2em] text-ink/55">
@@ -89,14 +97,6 @@ export default function Summary({ data }: { data: SummaryData }) {
                             })()}
                         </div>
                     )}
-
-                    <div className="md:mt-auto">
-                        <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-goldSoft px-3 py-1.5 text-md font-medium text-ink">
-                            <span aria-hidden>★</span>
-                            <span className="tabular-nums">{intg(data.Puntos)}</span>
-                            <span>puntos disponibles</span>
-                        </span>
-                    </div>
                 </div>
 
                 {/* Right: financials */}
