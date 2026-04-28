@@ -1,3 +1,5 @@
+import Reveal from '../motion/Reveal';
+
 type Post = { label: string; date: string; likes: string; tall?: boolean };
 
 const POSTS: Post[] = [
@@ -16,7 +18,7 @@ export default function FacebookFeed() {
 
   return (
     <section id="facebook" className="bg-paper">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+      <Reveal intensity="strong" className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
         <div className="mb-8 flex items-center gap-4">
           <span className="grid h-10 w-10 place-items-center rounded-full border border-ink bg-white text-base font-semibold text-ink">
             f
@@ -45,7 +47,7 @@ export default function FacebookFeed() {
             <FeedCard key={i} post={p} />
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

@@ -3,7 +3,7 @@ import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { isValidNoCuenta } from '@/utils/isValidNoCuenta';
 
-export default function Search({ styleVariant = "primary"} : { styleVariant?: string }) {
+export default function Search({ styleVariant = "primary"} : { styleVariant?: "primary" | "compact" }) {
 
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
@@ -30,7 +30,7 @@ export default function Search({ styleVariant = "primary"} : { styleVariant?: st
 
     const formVariants = {
         primary: "mx-auto mt-10 flex max-w-xl flex-col gap-2 rounded-2xl border bg-white p-2 sm:flex-row sm:items-center sm:rounded-full sm:p-2 sm:pl-5",
-        compact: "flex max-w-xl flex-row items-center gap-2 rounded-full border bg-white p-2 pl-5"
+        compact: "mx-auto flex max-w-xl flex-row items-center gap-2 rounded-full border bg-white p-2 pl-5"
     }
 
     const formElementVariants = {

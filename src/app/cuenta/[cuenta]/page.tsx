@@ -3,55 +3,46 @@ import Table from '@/components/cuenta/Table'
 import { getCuenta } from '../../api/cuenta'
 import { isValidNoCuenta } from '@/utils/isValidNoCuenta'
 import { redirect } from 'next/navigation'
-import { Button, Result } from 'antd';
+import { Result } from 'antd';
 import { tablaAmortColumns, tablaPagosColumns } from '@/constants/columns'
-import Link from 'next/link'
 import Search from '@/components/cuenta/Search'
 
 export default async function Cuenta({ params }: { params: Promise<{ cuenta: string }> }) {
-
     const { cuenta } = await params
 
-    isValidNoCuenta(cuenta) ? null : redirect('/cuenta')
+    if (!isValidNoCuenta(cuenta)) redirect('/')
 
-    const result = await getCuenta(cuenta)
-    const data: any = await result
+    const [summary, amort, pagos] = await getCuenta(cuenta)
 
-    if (data[0] == null) {
+    if (!summary) {
         return (
             <Result
-                status='404'
+                status='warning'
                 title='Número de cuenta no encontrado'
                 subTitle='Parece que el número de cuenta ingresado no existe, intente con otro, por favor.'
-                extra={
-                    <Link href={'/'}>
-                        <Button type='primary'>Regresar</Button>
-                    </Link>
-                }
+                extra={<Search styleVariant='compact' />}
             />
         )
     }
 
     return (
-        <div className='bg-paper p-5 pt-24'>
-            <Search
-                styleVariant='compact'
-            />
+        <>
+            <Search styleVariant='compact' />
             <div className='mx-auto flex max-w-7xl flex-col gap-5 py-4 sm:px-8 sm:py-10'>
-                <Summary data={data[0]} />
+                <Summary data={summary} />
                 <Table
                     title='Tabla de amortización'
                     columns={tablaAmortColumns}
-                    data={data[1]}
+                    data={amort}
                     rowKey='IdTA'
                 />
                 <Table
                     columns={tablaPagosColumns}
                     title='Recibos de pago'
-                    data={data[2]}
+                    data={pagos}
                     rowKey='IdPagsCli'
                 />
             </div>
-        </div>
+        </>
     )
 }

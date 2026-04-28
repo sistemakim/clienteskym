@@ -40,7 +40,7 @@ export default function HeroSearch() {
         </StaggerItem>
         <StaggerItem>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-paper/70 sm:text-base">
-            Ingresa el número de su cuenta para consultar todos los detalles.
+            Consulte todos los detalles de su cuenta.
           </p>
         </StaggerItem>
         <StaggerItem>
@@ -56,10 +56,10 @@ export default function HeroSearch() {
               anchor={{ to: 'bottom', gap: 8 }}
               className="z-50 w-72 rounded-xl border border-ink bg-white p-4 text-left text-sm text-ink shadow-lg transition data-[closed]:translate-y-1 data-[closed]:opacity-0"
             >
-              <p className="font-medium">Encuentra tu número</p>
+              <p className="font-medium">Encuentra tu número de cuenta</p>
               <p className="mt-1.5 text-ink/70">
-                Aparece en la parte superior de tu factura impresa o en el
-                correo de confirmación, con el formato <span className="font-mono">F-AAAA-XXXXX</span>.
+                Aparece en la parte superior de tu factura impresa, 
+                con el formato <span className="font-mono">AAA123</span>.
               </p>
             </PopoverPanel>
           </Popover>

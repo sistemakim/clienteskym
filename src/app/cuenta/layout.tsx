@@ -28,7 +28,9 @@ export default function CuentaLayout({
         },
       }}
     >
-      <AntdRegistry>{children}</AntdRegistry>
+      <AntdRegistry>
+        <div className="bg-paper p-5 pt-24">{children}</div>
+      </AntdRegistry>
     </ConfigProvider>
   );
 }

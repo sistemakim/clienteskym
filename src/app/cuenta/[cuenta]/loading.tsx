@@ -1,11 +1,24 @@
 export default function Loading() {
     return (
-        <div className='bg-paper'>
-            <div className='mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 sm:py-10'>
+        <>
+            <SearchSkeleton />
+            <div className='mx-auto flex max-w-7xl flex-col gap-5 py-4 sm:px-8 sm:py-10'>
                 <SummarySkeleton />
                 <TableSkeleton />
                 <TableSkeleton />
             </div>
+        </>
+    );
+}
+
+function SearchSkeleton() {
+    return (
+        <div className='mx-auto flex max-w-xl flex-row items-center gap-2 rounded-full border border-ink/15 bg-white p-2 pl-5'>
+            <div className='flex flex-1 items-center gap-2'>
+                <Bar className='h-4 w-4 rounded-full' />
+                <Bar className='h-4 w-40' />
+            </div>
+            <Bar className='h-9 w-24 shrink-0 rounded-full' />
         </div>
     );
 }
@@ -21,12 +34,18 @@ function SummarySkeleton() {
 
             <div className='grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] md:gap-0'>
                 <div className='flex flex-col gap-4 md:gap-6 md:pr-6'>
-                    <div className='flex flex-row'>
-                        <div className='h-14 w-14 shrink-0 animate-pulse rounded-full bg-ink/10' />
+                    <div className='flex flex-row items-center'>
+                        <div className='h-12 w-12 shrink-0 animate-pulse rounded-full bg-ink/10 sm:h-14 sm:w-14' />
                         <div className='ml-4 flex min-w-0 flex-col gap-2'>
                             <Bar className='h-7 w-56' />
                             <Bar className='h-4 w-40' />
                         </div>
+                    </div>
+
+                    <div className='flex flex-col gap-2 rounded-xl border border-ink/10 p-3 sm:p-4'>
+                        <Bar className='h-2.5 w-32' />
+                        <Bar className='h-4 w-40' />
+                        <Bar className='h-10 w-full rounded-full sm:w-44' />
                     </div>
 
                     <div className='md:mt-auto'>
