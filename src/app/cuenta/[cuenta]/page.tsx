@@ -1,6 +1,7 @@
 import Summary from '@/components/cuenta/Summary'
 import Table from '@/components/cuenta/Table'
-import { getCuenta } from '../../api/cuenta'
+import RedeemableProducts from '@/components/cuenta/RedeemableProducts'
+import { getCuenta, getProductosCanjeables } from '../../api/cuenta'
 import { isValidNoCuenta } from '@/utils/isValidNoCuenta'
 import { redirect } from 'next/navigation'
 import { Result } from 'antd';
@@ -12,7 +13,10 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
 
     if (!isValidNoCuenta(cuenta)) redirect('/')
 
-    const [summary, amort, pagos] = await getCuenta(cuenta)
+    const [[summary, amort, pagos], productos] = await Promise.all([
+        getCuenta(cuenta),
+        getProductosCanjeables(),
+    ])
 
     if (!summary) {
         return (
@@ -42,6 +46,7 @@ export default async function Cuenta({ params }: { params: Promise<{ cuenta: str
                     data={pagos}
                     rowKey='IdPagsCli'
                 />
+                <RedeemableProducts data={productos} />
             </div>
         </>
     )

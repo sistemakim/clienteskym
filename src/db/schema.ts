@@ -1,4 +1,4 @@
-import { mysqlTable, int, varchar, decimal, datetime } from 'drizzle-orm/mysql-core';
+import { mysqlTable, int, tinyint, varchar, decimal, datetime } from 'drizzle-orm/mysql-core';
 
 export const gcTablaAmort = mysqlTable('gc_tablaamort', {
     IdTA: int('IdTA').primaryKey(),
@@ -13,6 +13,20 @@ export const gcTablaAmort = mysqlTable('gc_tablaamort', {
     NvoSal: decimal('NvoSal', { precision: 14, scale: 2 }),
     Status: varchar('Status', { length: 32 }),
     PuntPag: int('PuntPag'),
+});
+
+export const gcProductosCanjeables = mysqlTable('gc_productos_canjeables', {
+    IdProdCanj: int('IdProdCanj').primaryKey(),
+    IdEmpr: varchar('IdEmpr', { length: 50 }).notNull(),
+    ClaSuc: varchar('ClaSuc', { length: 50 }).notNull(),
+    IdArtSer: varchar('IdArtSer', { length: 50 }).notNull(),
+    NoAlm: tinyint('NoAlm').notNull(),
+    puntos_costo: int('puntos_costo').notNull(),
+});
+
+export const gcArtsServs = mysqlTable('gc_artsservs', {
+    IdArtSer: varchar('IdArtSer', { length: 50 }).primaryKey(),
+    ArtSer: varchar('ArtSer', { length: 255 }),
 });
 
 export const gcPagsCli = mysqlTable('gc_pags_cli', {

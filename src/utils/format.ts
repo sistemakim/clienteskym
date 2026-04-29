@@ -18,3 +18,8 @@ export function formatInt(v: number | string | null | undefined): string {
     const n = Number(v);
     return Number.isFinite(n) ? intFmt.format(n) : '';
 }
+
+export function stripItemCode(name: string): string {
+    const idx = name.search(/\s/);
+    return idx === -1 ? name.trim() : name.slice(idx + 1).trim();
+}

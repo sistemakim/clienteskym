@@ -1,8 +1,9 @@
 import 'server-only';
 import { sql, eq, asc } from 'drizzle-orm';
 import { db } from '@/db';
-import { gcTablaAmort, gcPagsCli } from '@/db/schema';
+import { gcTablaAmort, gcPagsCli, gcProductosCanjeables, gcArtsServs } from '@/db/schema';
 import { cached } from '@/db/cache';
+import { stripItemCode } from '@/utils/format';
 
 export type CuentaSummary = {
     IdCta: number;
@@ -19,6 +20,13 @@ export type CuentaSummary = {
 
 export type CuentaAmortRow = typeof gcTablaAmort.$inferSelect;
 export type CuentaPagoRow = typeof gcPagsCli.$inferSelect;
+export type RedeemableProduct = {
+    IdProdCanj: number;
+    IdArtSer: string;
+    NoAlm: number;
+    nombre: string;
+    puntosCosto: number;
+};
 export type CuentaResult = readonly [CuentaSummary | null, CuentaAmortRow[], CuentaPagoRow[]];
 
 export async function getCuenta(cuenta: string): Promise<CuentaResult> {
@@ -54,6 +62,35 @@ export async function getCuenta(cuenta: string): Promise<CuentaResult> {
         } catch (err) {
             console.error('Database error in getCuenta:', err);
             throw new Error('Failed to fetch account data');
+        }
+    });
+}
+
+export async function getProductosCanjeables(): Promise<RedeemableProduct[]> {
+    return cached('productos-canjeables', async (): Promise<RedeemableProduct[]> => {
+        try {
+            const rows = await db
+                .select({
+                    IdProdCanj: gcProductosCanjeables.IdProdCanj,
+                    IdArtSer: gcProductosCanjeables.IdArtSer,
+                    NoAlm: gcProductosCanjeables.NoAlm,
+                    ArtSer: gcArtsServs.ArtSer,
+                    puntosCosto: gcProductosCanjeables.puntos_costo,
+                })
+                .from(gcProductosCanjeables)
+                .innerJoin(gcArtsServs, eq(gcArtsServs.IdArtSer, gcProductosCanjeables.IdArtSer))
+                .orderBy(asc(gcProductosCanjeables.puntos_costo));
+
+            return rows.map((r) => ({
+                IdProdCanj: r.IdProdCanj,
+                IdArtSer: r.IdArtSer,
+                NoAlm: r.NoAlm,
+                nombre: stripItemCode(r.ArtSer ?? ''),
+                puntosCosto: r.puntosCosto,
+            }));
+        } catch (err) {
+            console.error('Database error in getProductosCanjeables:', err);
+            throw new Error('Failed to fetch redeemable products');
         }
     });
 }
