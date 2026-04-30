@@ -1,9 +1,28 @@
 const SOCIALS = [
-  { label: 'f', href: 'https://facebook.com' },
-  { label: 'ig', href: 'https://instagram.com' },
-  { label: 'tt', href: 'https://tiktok.com' },
-  { label: 'yt', href: 'https://youtube.com' },
+  {
+    label: 'Moda, Tecnología y Hogar HCE',
+    href: 'https://www.facebook.com/share/1Ch2msV7ee/?mibextid=wwXIfr',
+  },
+  {
+    label: 'Camila Herrera',
+    href: 'https://www.facebook.com/share/17MSMbAdfr/?mibextid=wwXIfr',
+  },
 ];
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        fill="#1877F2"
+        d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.47h-2.796v8.385C19.612 22.954 24 17.99 24 12z"
+      />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
@@ -25,26 +44,27 @@ export default function Footer() {
               </a>
             }
           />
-          <InfoRow icon="⌖" label="Dirección" value="Privada Circonia #1268 Col. Los Encinos" />
-          <InfoRow icon="⏱" label="Horario" value="Lun–Sáb · 9:00 — 19:00" />
+          <InfoRow icon="⌖" label="Dirección" value="Argenta y Obeliscos #129 Bosques de los Olivos" />
+          <InfoRow icon="⏱" label="Horario" value="Lun–Sáb · 9:00 P.M. — 5:00 P.M." />
           <InfoRow
-            icon="@"
-            label="Redes"
+            icon="f"
+            label="Facebook"
             value={
-              <div className="mt-1.5 flex gap-2">
+              <ul className="mt-1.5 flex flex-col gap-2">
                 {SOCIALS.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="grid h-9 w-9 place-items-center rounded-full border border-ink/30 text-xs text-ink transition hover:bg-paper"
-                  >
-                    {s.label}
-                  </a>
+                  <li key={s.href}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-base text-ink hover:text-gold"
+                    >
+                      <FacebookIcon className="h-5 w-5 shrink-0" />
+                      {s.label}
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
             }
           />
         </div>
