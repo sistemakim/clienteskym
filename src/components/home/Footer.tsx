@@ -45,7 +45,7 @@ export default function Footer() {
             }
           />
           <InfoRow icon="⌖" label="Dirección" value="Argenta y Obeliscos #129 Bosques de los Olivos" />
-          <InfoRow icon="⏱" label="Horario" value="Lun–Sáb · 9:00 P.M. — 5:00 P.M." />
+          <InfoRow icon="⏱" label="Horario" value="Lun - Sáb · 9:00 a.m. — 5:00 p.m." />
           <InfoRow
             icon="f"
             label="Facebook"
